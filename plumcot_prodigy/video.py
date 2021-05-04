@@ -4,7 +4,6 @@ import base64
 from typing import Dict, Text
 from pathlib import Path
 
-
 def mkv_to_base64(mkv: Path, start_time: float, end_time: float) -> Text:
     """Extract video excerpt for use with prodigy
 
@@ -22,7 +21,9 @@ def mkv_to_base64(mkv: Path, start_time: float, end_time: float) -> Text:
     episode = mkv.split('/')[-1]
     episode = episode.strip('.mkv')
     
-    audio_path = f"/vol/work3/lefevre/dvd_extracted/{episode.split('.')[0]}/{episode}.en16kHz.wav"
+    home = Path(__file__).parent.absolute()
+    
+    audio_path = f"{home}/data/{episode.split('.')[0]}/{episode}.en16kHz.wav"
 
     background_audio_clip = AudioFileClip(audio_path).subclip(start_time, end_time)
     

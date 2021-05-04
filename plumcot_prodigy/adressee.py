@@ -4,10 +4,12 @@ from plumcot_prodigy.custom_loaders import *
 import requests
 from plumcot_prodigy.video import mkv_to_base64
 from typing import Dict, List, Text
+from pathlib import Path
 
 # path to shows directories
 #PATH = "/vol/work1/bergoend/pyannote-db-plumcot/Plumcot/data"
-PATH = "/vol/work1/bergoend/point_prodigy/plumcot-prodigy"
+#PATH = "/vol/work1/bergoend/point_prodigy/plumcot-prodigy"
+PATH = Path(__file__).parent.absolute()
 
 def remove_video_before_db(examples: List[Dict]) -> List[Dict]:
     """Remove (heavy) "video" and "pictures" key from examples before saving to Prodigy database
@@ -160,7 +162,7 @@ def speech_turns():
 
                         s.append({"text": speaker_sent[1], "meta": {"speaker": speaker_sent[0], "aligned": idx_sent[1]} })
                     else:
-                        print("!!! Not enough sentences !!!")
+                        print("DONE.")
                                 
                 # text data to return to Prodigy
                 to_return = {'text': ''}
