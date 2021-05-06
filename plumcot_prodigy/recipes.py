@@ -25,6 +25,8 @@ def remove_video_before_db(examples: List[Dict]) -> List[Dict]:
 
 
 def stream():
+    
+    PATH = Path(__file__).parent.absolute()
 
     forced_alignment = ForcedAlignment()
 
@@ -35,10 +37,10 @@ def stream():
         series, _, _ = episode.split('.')
         
         # path to mkv -- hardcoded for now
-        mkv = f"/vol/work3/lefevre/dvd_extracted/{series}/{episode}.mkv"
+        mkv = f"{PATH}/data/{series}/{episode}.mkv"
 
         # path to forced alignment -- hardcoded for now
-        aligned = f"/vol/work1/bergoend/point_prodigy/plumcot-prodigy/{episode}.aligned"
+        aligned = f"{episode}.aligned"
 
         # load forced alignment
         transcript = forced_alignment(aligned)
