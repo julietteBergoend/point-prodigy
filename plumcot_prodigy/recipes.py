@@ -2,6 +2,7 @@ import prodigy
 from plumcot_prodigy.forced_alignment import ForcedAlignment
 from plumcot_prodigy.video import mkv_to_base64
 from typing import Dict, List, Text
+from pathlib import Path
 
 import random
 
